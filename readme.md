@@ -10,7 +10,8 @@
 cd /etc/apache2/sites-available/
 
 sudo vim misite.pe.conf
-```<VirtualHost *:80>
+```
+<VirtualHost *:80>
     ServerAdmin webmaster@localhost
     ServerName misite.pe
     DocumentRoot /var/www/mi_sitio_web
@@ -25,8 +26,8 @@ sudo vim misite.pe.conf
 </VirtualHost>
 ```
 ## Enable your virtual domain
-sudo a2ensite misite.pe.conf
-systemctl restart apache2
+- sudo a2ensite misite.pe.conf
+- systemctl restart apache2
 
 ## Update your host file
 sudo vim /etc/hosts
@@ -34,3 +35,6 @@ sudo vim /etc/hosts
 127.0.0.1       misite.pe
 ```
 systemctl restart apache2
+# If permisions denied error
+- Do a chmod +x on your user dir, and restart apache. 755 permissions should work. 
+- sudo chmod +x /home/silverliningco/
