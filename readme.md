@@ -1,4 +1,4 @@
-# Steps to create a Virtual Domains in Ubuntu #
+# Steps to create a Virtual Domainsin Ubuntu #
 ## Install apache and enable modules
 1. sudo apt update
 2. sudo apt install apache2
@@ -6,16 +6,18 @@
 4. systemctl restart apache2
 5. sudo a2enmod vhost_alias
 
+## Add a symbolic link
+ln -s /home/silverliningco/myrepos/sunacool.coolcalc.com/www /var/www/html/sunacool.coolcalc.com
+
 ## Configure your virtual domain
 cd /etc/apache2/sites-available/
 
 sudo vim misite.pe.conf
-```
-<VirtualHost *:80>
+```<VirtualHost *:80>
     ServerAdmin webmaster@localhost
     ServerName misite.pe
-    DocumentRoot /var/www/mi_sitio_web
-    <Directory /var/www/mi_sitio_web>
+    DocumentRoot /home/silverliningco/Documentos/anthara/intranet
+    <Directory /home/silverliningco/Documentos/anthara/intranet>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
         Require all granted
@@ -26,15 +28,16 @@ sudo vim misite.pe.conf
 </VirtualHost>
 ```
 ## Enable your virtual domain
-- sudo a2ensite misite.pe.conf
-- systemctl restart apache2
+sudo a2ensite misite.pe.conf
+systemctl restart apache2
 
 ## Update your host file
 sudo vim /etc/hosts
 ```
 127.0.0.1       misite.pe
 ```
-systemctl restart apache2
+sudo systemctl restart apache2
+
 # If permisions denied error
 - Do a chmod +x on your user dir, and restart apache. 755 permissions should work. 
 - sudo chmod +x /home/silverliningco/
